@@ -4,7 +4,6 @@ class CreateCards < ActiveRecord::Migration
       t.text :original_text
       t.text :translated_text
       t.date :review_date
-      
       t.timestamps null: false
     end
   end
