@@ -1,0 +1,11 @@
+<%= simple_form_for @card,
+  wrapper: :inline_form,
+  html: { class: 'form-inline' } do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :original_text, placeholder: 'Текст оригинала' %>
+
+  <%= f.input :translated_text, placeholder: 'Перевод' %>
+
+  <%= f.button :submit %>
+<% end %>
