@@ -18,6 +18,20 @@ class CardsController < ApplicationController
     end
   end
 
+  def edit
+    @card = Card.find(params[:id])
+  end
+
+  def update
+    @card = Card.find(params[:id])
+
+    if @card.update(card_params)
+      redirect_to cards_path
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     @card = Card.find(params[:id])
     @card.destroy
