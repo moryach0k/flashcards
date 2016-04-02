@@ -3,6 +3,7 @@ class Card < ActiveRecord::Base
   validate :original_and_translated_text_cannot_be_the_same
 
   private
+  
   def original_and_translated_text_cannot_be_the_same
     if original_text.casecmp(translated_text) == 0
       errors.add(:original_text, "cant be the same")
