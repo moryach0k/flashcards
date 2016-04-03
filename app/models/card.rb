@@ -2,8 +2,12 @@ class Card < ActiveRecord::Base
   validates :original_text, :translated_text, :review_date, presence: true
   validate :original_and_translated_text_cannot_be_the_same
 
+  def increase_review_date
+      self.review_date = Time.now.to_date + 3
+  end
+
   private
-  
+
   def original_and_translated_text_cannot_be_the_same
     if original_text.casecmp(translated_text) == 0
       errors.add(:original_text, "cant be the same")
