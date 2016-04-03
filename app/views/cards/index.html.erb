@@ -16,6 +16,10 @@
         <td><%= card.review_date.day.to_s << "/" << 
         card.review_date.month.to_s << "/" << 
         card.review_date.year.to_s %></td>
+        <td><%= link_to "Редактировать", edit_card_path(card) %></td>
+        <td><%= link_to "Удалить", card_path(card), 
+        method: :delete, 
+        data: {confirm: "Вы уверены?"} %></td>
       </tr>
     <% end %>
 
