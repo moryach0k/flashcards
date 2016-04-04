@@ -11,15 +11,15 @@ require 'open-uri'
 doc = Nokogiri::HTML(open('http://www.languagedaily.com/learn-german/vocabulary/common-german-words'))
 
 rows = doc.search('//tbody//tr')
-@details = rows.collect do |row|
-    detail = {}
-    [
-      [:original_text, 'td[2]/text()'],
-      [:translated_text, 'td[3]/text()'],
-    ].each do |name, xpath|
-      detail[name] = row.at_xpath(xpath).to_s.strip
-    end
-    detail
+@details = rows.map do |row|
+  detail = {}
+  [
+    [:original_text, 'td[2]/text()'],
+    [:translated_text, 'td[3]/text()'],
+  ].each do |name, xpath|
+    detail[name] = row.at_xpath(xpath).to_s.strip
+  end
+  detail
 end
 
 @details.each do |detail|
