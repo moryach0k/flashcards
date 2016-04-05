@@ -11,7 +11,7 @@ class CardsController < ApplicationController
     @card = Card.new(card_params)
     @card.increase_review_date
 
-    if @card.save!
+    if @card.save
       redirect_to cards_path
     else
       render "new"
