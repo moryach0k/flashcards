@@ -9,7 +9,7 @@ class Card < ActiveRecord::Base
   end
 
   def correctly_translated(user_original_text)
-    if self.original_text.eql?(user_original_text)
+    if original_text.eql?(user_original_text)
       increase_review_date
       return true
     end
