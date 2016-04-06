@@ -39,6 +39,17 @@ class CardsController < ApplicationController
     redirect_to cards_path
   end
 
+  def compare_texts
+    @card = Card.find(params[:id])
+    if @card.correctly_translated(params[:user_original_text])
+      flash[:notice] = "Правильно!"
+      @card.save
+    else
+      flash[:notice] = "Неправильно!"
+    end
+    redirect_to root_path
+  end
+
   private
 
   def card_params

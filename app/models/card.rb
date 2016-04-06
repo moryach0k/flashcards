@@ -8,6 +8,13 @@ class Card < ActiveRecord::Base
       self.review_date = Time.now.to_date + 3
   end
 
+  def correctly_translated(user_original_text)
+    if self.original_text.eql?(user_original_text)
+      increase_review_date
+      return true
+    end
+  end
+
   private
 
   def original_and_translated_text_cannot_be_the_same

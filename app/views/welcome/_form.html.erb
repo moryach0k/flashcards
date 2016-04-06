@@ -1,13 +1,13 @@
-<%= simple_form_for @card do |f| %>
+<%= simple_form_for @card, :url => root_path, :method => :post do |f| %>
   <%= f.error_notification %>
 
-  <%= @card.translated_text%>
+  <%= @card.translated_text %>
   
   <br/>
-  <input id="user_original_text" class="form-control" placeholder="Введите перевод" />
+  <input id="user_original_text" name="user_original_text" class="form-control" placeholder="Введите перевод" />
   <br/>
 
-  <%= hidden_field_tag 'original_text', @card.original_text %>
+  <%= hidden_field_tag "id", @card.id %>
 
   <%= f.button :submit, value: "Проверить" %>
 <% end %>
