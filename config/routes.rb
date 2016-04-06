@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :cards
 
-  post "/" => "cards#compare_texts"
+  post "check" => "cards#compare_texts"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

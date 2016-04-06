@@ -1,4 +1,4 @@
-<%= simple_form_for @card, :url => root_path, :method => :post do |f| %>
+<%= simple_form_for @card, :url => url_for(:action => 'compare_texts', :controller => 'cards'), :method => :post do |f| %>
   <%= f.error_notification %>
 
   <%= @card.translated_text %>
