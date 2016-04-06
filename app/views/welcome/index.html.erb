@@ -1,1 +1,11 @@
 <p>Первый в мире удобный менеджер флеш-карточек. Именно так.</p>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<div class="main_form">
+  <% if @card.nil? %>
+    <p>Сегодня нет слов для повторения :)</p>
+  <% else %>
+    <%= render 'form' %>
+  <% end %>
+</div>

@@ -11,7 +11,7 @@ class CardsController < ApplicationController
     @card = Card.new(card_params)
     @card.increase_review_date
 
-    if @card.save!
+    if @card.save
       redirect_to cards_path
     else
       render "new"
@@ -37,6 +37,17 @@ class CardsController < ApplicationController
     @card.destroy
 
     redirect_to cards_path
+  end
+
+  def compare_texts
+    @card = Card.find(params[:id])
+    if @card.correctly_translated(params[:user_original_text])
+      flash[:notice] = "Правильно!"
+      @card.save
+    else
+      flash[:notice] = "Неправильно!"
+    end
+    redirect_to root_path
   end
 
   private
