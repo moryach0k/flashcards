@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Card, :type => :model do
+RSpec.describe Card, type: :model do
   it "returns true if correctly translated" do
     card = Card.create!(original_text: "House", translated_text: "Дом", review_date: Time.now.to_date)
     expect(card.correctly_translated("HoUse")).to be true
