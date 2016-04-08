@@ -3,4 +3,3 @@ rvm:
   - 2.2
 gemfile:
   - Gemfile
-script: "bundle exec rspec"
