@@ -12,9 +12,8 @@ class Card < ActiveRecord::Base
     if original_text.casecmp(user_original_text) == 0
       increase_review_date
       return true
-    else
-      return false
     end
+    return false
   end
 
   private
