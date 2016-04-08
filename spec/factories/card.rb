@@ -1,5 +1,4 @@
 FactoryGirl.define do
-
   factory :card do
     original_text "Water"
     translated_text "Вода"
@@ -9,5 +8,4 @@ FactoryGirl.define do
       card.update_attributes(review_date: Date.today - 3)
     end
   end
-
 end
