@@ -19,5 +19,5 @@ rows = doc.search('//tbody//tr')
   ].each do |name, xpath|
     detail[name] = row.at_xpath(xpath).to_s.strip
   end
-  Card.create(original_text: detail[:original_text], translated_text: detail[:translated_text], review_date: Time.now.to_date)
+  Card.create(original_text: detail[:original_text], translated_text: detail[:translated_text], review_date: Date.today)
 end
