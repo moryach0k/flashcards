@@ -4,5 +4,6 @@ rvm:
 gemfile: Gemfile
 before_script:
   - "cp config/database.yml.travis config/database.yml"
+  - "cp config/secrets.yml.travis config/secrets.yml"
   - "RAILS_ENV=test bundle exec rake db:create"
   - "RAILS_ENV=test bundle exec rake db:migrate"
