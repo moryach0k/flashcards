@@ -9,10 +9,11 @@ class Card < ActiveRecord::Base
   end
 
   def correctly_translated(user_original_text)
-    if original_text.eql?(user_original_text)
+    if original_text.casecmp(user_original_text) == 0
       increase_review_date
       return true
     end
+    false
   end
 
   private
