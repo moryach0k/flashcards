@@ -13,7 +13,7 @@ class Card < ActiveRecord::Base
       increase_review_date
       return true
     end
-    return false
+    false
   end
 
   private
