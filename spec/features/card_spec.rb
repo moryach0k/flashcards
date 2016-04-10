@@ -1,16 +1,18 @@
 require 'rails_helper'
+require 'support/check_translation_helper'
 
 describe 'checking translate' do
-  before(:each) do
-    card = create(:card, original_text: "Water",
-                         translated_text: "Вода",
-                         review_date: Date.today)
+  let!(:card) { create(:card, original_text: "Water",
+                              translated_text: "Вода",
+                              review_date: Date.today) }
+
+  it "checking right translation" do
+    check_translation("water")
+    expect(page).to have_content "Правильно!"
   end
 
-  it "checking translation" do
-    visit root_path
-    fill_in "user_original_text", with: "water"
-    click_button "Проверить"
-    expect(page).to have_content "Правильно!"
+  it "checking wrong translation" do
+    check_translation("food")
+    expect(page).to have_content "Неправильно!"
   end
 end
