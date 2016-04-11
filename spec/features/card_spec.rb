@@ -1,10 +1,12 @@
 require 'rails_helper'
 require 'support/check_translation_helper'
 
-describe 'checking translate' do
+describe 'checking translation process' do
+  let!(:user) { create(:user, email: "user@email.com", password: "qwerty") }
   let!(:card) { create(:card, original_text: "Water",
                               translated_text: "Вода",
-                              review_date: Date.today) }
+                              review_date: Date.today,
+                              user: user) }
 
   it "checking right translation" do
     check_translation("water")
