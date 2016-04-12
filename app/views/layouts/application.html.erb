@@ -11,12 +11,21 @@
 	<section id="container">
 
     <header class="navbar">
-      <h1 id="logo">Флэшкарточкер</h1>
+      <h1 id="logo"><%= link_to "Флэшкарточкер", root_path %></h1>
       <ul class="nav nav-pills pull-right">
+        <% if current_user %>
+          <li> <%= link_to "Edit Profile", edit_user_path(current_user.id) %> </li>
+          <li> <%= link_to "Logout", :logout, method: :post %> </li>
+        <% else %>
+          <li> <%= link_to "Register", new_user_path %> </li>
+          <li> <%= link_to "Login", :login %> </li>
+        <% end %>
         <li><%= link_to "Все карточки", cards_path %></a></li>
         <li><%= link_to "Добавить карточку", new_card_path %></a></li>
       </ul>
     </header>
+
+  
 
 	<%= yield %>
 

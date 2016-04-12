@@ -2,8 +2,12 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :cards
+  resources :user_sessions
+  resources :users
 
   post "check" => "cards#compare_texts"
+  get 'login' => 'user_sessions#new', :as => :login
+  post 'logout' => 'user_sessions#destroy', :as => :logout
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
