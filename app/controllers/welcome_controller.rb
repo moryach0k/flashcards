@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    @card = Card.needed_to_review.sample
+    @user = current_user
+    @card = @user.cards.needed_to_review.sample
   end
 end
