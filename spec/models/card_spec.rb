@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Card, type: :model do
-  let!(:user) { create(:user, email: "user@email.com", password: "qwerty") }
+  let!(:user) { create(:user, email: "user@email.com", password: "qwerty", password_confirmation: "qwerty") }
 
   it "returns true if correctly translated" do
     card = user.cards.create!(original_text: "House", translated_text: "Дом", review_date: Date.today)
