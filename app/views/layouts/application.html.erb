@@ -17,7 +17,7 @@
           <li> <%= link_to "Редактировать профиль", edit_user_path(current_user.id) %> </li>
           <li> <%= link_to "Выйти", :logout, method: :post %> </li>
         <% else %>
-          <li> <%= link_to "Регистрация", new_user_path %> </li>
+          <li> <%= link_to "Регистрация", new_user_path, id: "registration" %> </li>
           <li> <%= link_to "Войти", :login, id: "login" %> </li>
         <% end %>
         <li><%= link_to "Все карточки", cards_path %></a></li>
