@@ -1,7 +1,6 @@
 class CardsController < ApplicationController
   def index
-    @user = current_user
-    @cards = @user.cards.all
+    @cards = current_user.cards.all
   end
 
   def new
@@ -10,8 +9,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @card = @user.cards.create(card_params)
+    @card = current_user.cards.create(card_params)
     @card.increase_review_date
 
     if @card.save

@@ -1,8 +1,7 @@
 class WelcomeController < ApplicationController
   def index
-    @user = current_user
-    unless @user.nil?
-      @card = @user.cards.needed_to_review.sample
+    unless current_user.nil?
+      @card = current_user.cards.needed_to_review.sample
     end
   end
 end
