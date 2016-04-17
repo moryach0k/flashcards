@@ -13,7 +13,7 @@ class CardsController < ApplicationController
     @card.increase_review_date
 
     if @card.save
-      redirect_to cards_path
+      redirect_to cards_path, notice: 'Card was successfully created.'
     else
       render "new"
     end
@@ -27,7 +27,7 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id])
 
     if @card.update(card_params)
-      redirect_to cards_path
+      redirect_to cards_path, notice: 'Card was successfully edited.'
     else
       render 'edit'
     end
