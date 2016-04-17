@@ -6,12 +6,11 @@ class Card < ActiveRecord::Base
       access_key_id: ENV["AWS_ACCESS_KEY_ID"],
       secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"]
     },
-    #s3_region: ENV["AWS_REGION"],
     path: "card/:attachment/:id/:style/:filename",
     url: ":s3_domain_url",
     styles: { medium: "360x360>" }
 
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :image, content_type: %r/\Aimage\/.*\Z/
 
   belongs_to :user
   validates :original_text, :translated_text, :review_date, presence: true
