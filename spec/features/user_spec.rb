@@ -3,7 +3,7 @@ require 'support/login_helper'
 require 'support/registration_helper'
 
 describe 'login process' do
-  let!(:user) { create(:user, email: "user@email.com", password: "qwerty", password_confirmation: "qwerty") }
+  let!(:user) { create(:user) }
 
   it "checking right login" do
     login("user@email.com", "qwerty")
