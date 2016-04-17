@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'simple_form'
 gem 'nokogiri'
 gem 'sorcery'
+gem "paperclip", "~> 5.0.0.beta1"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
