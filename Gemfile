@@ -17,6 +17,8 @@ gem 'simple_form'
 gem 'nokogiri'
 gem 'sorcery'
 gem "paperclip", "~> 4.2"
+gem 'aws-sdk', '< 2.0'
+gem "figaro"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
