@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :cards
   resources :user_sessions
   resources :users
+  resources :decks
 
   post "check" => "cards#compare_texts"
   get 'login' => 'user_sessions#new', :as => :login

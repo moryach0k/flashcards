@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<div class="panel panel-default">
+
+  <div class="panel-heading">Все колоды</div>
+
+  <table class="table">
+
+    <% @decks.each do |deck| %>
+      <tr>
+        <td><%= deck.name %></td>
+        <td><%= link_to "Редактировать", edit_deck_path(deck) %></td>
+        <td><%= link_to "Удалить", deck_path(deck), 
+        method: :delete, 
+        data: {confirm: "Вы уверены?"} %></td>
+      </tr>
+    <% end %>
+
+  </table>
+
+</div>
