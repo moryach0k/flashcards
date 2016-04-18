@@ -1,15 +1,5 @@
 class Card < ActiveRecord::Base
-  has_attached_file :image,
-    storage: :s3,
-    bucket: ENV["AWS_BUCKET"],
-    s3_credentials: {
-      access_key_id: ENV["AWS_ACCESS_KEY_ID"],
-      secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"]
-    },
-    s3_region: ENV["AWS_REGION"],
-    path: "card/:attachment/:id/:style/:filename",
-    url: ":s3_domain_url",
-    styles: { medium: "360x360>" }
+  has_attached_file :image, styles: { medium: "360x360>" }
 
   validates_attachment_content_type :image, content_type: %r/\Aimage\/.*\Z/
 
