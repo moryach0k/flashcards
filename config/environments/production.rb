@@ -85,7 +85,6 @@ Rails.application.configure do
       secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"]
     },
     s3_region: ENV["AWS_REGION"],
-    path: "card/:attachment/:id/:style/:filename",
-    url: ":s3_domain_url",
+    url: ":s3_domain_url"
   }
 end
