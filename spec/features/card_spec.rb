@@ -11,10 +11,10 @@ describe 'checking translation process' do
     login("user@email.com", "qwerty")
   end
 
-  #it "checking right creating card" do
-  #  create_card("Water", "Вода")
-  #  expect(page).to have_content "Card was successfully created."
-  #end
+  it "checking right creating card" do
+    create_card("Water", "Вода")
+    expect(page).to have_content "Card was successfully created."
+  end
 
   it "checking right translation" do
     check_translation("water")
