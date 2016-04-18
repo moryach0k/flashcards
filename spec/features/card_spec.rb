@@ -1,16 +1,19 @@
 require 'rails_helper'
 require 'support/check_translation_helper'
 require 'support/login_helper'
+require 'support/create_card_helper.rb'
 
 describe 'checking translation process' do
-  let!(:user) { create(:user, email: "user@email.com", password: "qwerty", password_confirmation: "qwerty") }
-  let!(:card) { create(:card, original_text: "Water",
-                              translated_text: "Вода",
-                              review_date: Date.today,
-                              user: user) }
+  let!(:user) { create(:user) }
+  let!(:card) { create(:card, user: user) }
 
   before(:each) do
     login("user@email.com", "qwerty")
+  end
+
+  it "checking right creating card" do
+    create_card("Water", "Вода")
+    expect(page).to have_content "Card was successfully created."
   end
 
   it "checking right translation" do
