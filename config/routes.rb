@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-  resources :cards
   resources :user_sessions
   resources :users
-  resources :decks
+  resources :decks do
+    resources :cards, shallow: true
+  end
 
   post "check" => "cards#compare_texts"
   get 'login' => 'user_sessions#new', :as => :login

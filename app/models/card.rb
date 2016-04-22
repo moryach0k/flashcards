@@ -7,6 +7,7 @@ class Card < ActiveRecord::Base
   belongs_to :deck
   validates :original_text, :translated_text, :review_date, presence: true
   validates :user, presence: true
+  validates :deck, presence: true
   validate :original_and_translated_text_cannot_be_the_same
 
   scope :needed_to_review, -> { where("review_date <= ?", Date.today - 3) }

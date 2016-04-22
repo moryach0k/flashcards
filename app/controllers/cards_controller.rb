@@ -4,16 +4,15 @@ class CardsController < ApplicationController
   end
 
   def new
-    @user = current_user
-    @card = Card.new
+    @card = current_user.decks.find(params[:deck_id]).cards.new
   end
 
   def create
-    @card = current_user.cards.create(card_params)
+    @card = Card.create(card_params.merge(user: current_user, deck: Deck.find(params[:deck_id])))
     @card.increase_review_date
 
     if @card.save
-      redirect_to cards_path, notice: 'Card was successfully created.'
+      redirect_to deck_path(params[:deck_id]), notice: 'Card was successfully created.'
     else
       render "new"
     end
@@ -35,9 +34,10 @@ class CardsController < ApplicationController
 
   def destroy
     @card = Card.find(params[:id])
+    deck = @card.deck
     @card.destroy
 
-    redirect_to cards_path
+    redirect_to deck_path(deck)
   end
 
   def compare_texts

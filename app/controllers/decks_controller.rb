@@ -3,6 +3,10 @@ class DecksController < ApplicationController
     @decks = current_user.decks.all
   end
 
+  def show
+    @deck = Deck.find(params[:id])
+  end
+
   def new
     @user = current_user
     @deck = Deck.new
