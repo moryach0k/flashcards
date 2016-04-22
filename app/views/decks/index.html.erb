@@ -8,7 +8,12 @@
 
     <% @decks.each do |deck| %>
       <tr>
-        <td><%= link_to deck.name, deck_path(deck) %></td>
+        <% unless deck.current_deck %>
+          <td><%= link_to deck.name, deck_path(deck) %></td>
+        <% else %>
+          <td><%= link_to deck.name+"(Текущая)", deck_path(deck) %></td>
+        <% end %>
+        <td><%= link_to "Сделать текущей колодой", set_current_deck_path(deck) %></td>
         <td><%= link_to "Добавить карточку", new_deck_card_path(deck) %></td>
         <td><%= link_to "Редактировать", edit_deck_path(deck) %></td>
         <td><%= link_to "Удалить", deck_path(deck), 

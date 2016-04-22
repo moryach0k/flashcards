@@ -26,7 +26,7 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id])
 
     if @card.update(card_params)
-      redirect_to cards_path, notice: 'Card was successfully edited.'
+      redirect_to decks_path, notice: 'Card was successfully edited.'
     else
       render 'edit'
     end

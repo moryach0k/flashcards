@@ -4,12 +4,14 @@ Rails.application.routes.draw do
   resources :user_sessions
   resources :users
   resources :decks do
+    get :set_current, on: :member
     resources :cards, shallow: true
   end
 
   post "check" => "cards#compare_texts"
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
+  put "set_current_deck" => "decks#set_current_deck"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -13,7 +13,7 @@ class DecksController < ApplicationController
   end
 
   def create
-    @deck = current_user.decks.create(deck_params)
+    @deck = current_user.decks.create(deck_params.merge(current_deck: false))
 
     if @deck.save
       redirect_to decks_path, notice: 'Deck was successfully created.'
@@ -43,8 +43,14 @@ class DecksController < ApplicationController
     redirect_to decks_path
   end
 
-  def current_deck
-    @current_deck = Deck.find(params[:id])
+  def set_current
+    deck = Deck.where("current_deck = ?", true)
+    deck[0].current_deck = false
+    deck[0].save
+    @deck = Deck.find(params[:id])
+    @deck.set_current
+    @deck.save
+    redirect_to decks_path
   end
 
   private

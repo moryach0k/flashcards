@@ -1,0 +1,13 @@
+<%= simple_form_for @card,
+  wrapper: :inline_form,
+  html: { multipart: true, class: 'form-inline' } do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :original_text, placeholder: 'Текст оригинала' %>
+
+  <%= f.input :translated_text, placeholder: 'Перевод' %>
+
+  <%= f.input :image, as: :file %>
+
+  <%= f.button :submit, id: "add_card_btn" %>
+<% end %>
