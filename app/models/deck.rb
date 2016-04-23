@@ -4,9 +4,12 @@ class Deck < ActiveRecord::Base
 
   validates :user, presence: true
 
-  def current_deck?(id)
-    if self.id == id
-      return true
+  after_destroy :set_to_nil_current_deck
+
+  protected
+  def set_to_nil_current_deck
+    if self.id == self.user.current_deck
+      self.user.update(current_deck: nil)
     end
   end
 end

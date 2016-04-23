@@ -39,19 +39,13 @@ class DecksController < ApplicationController
   def destroy
     @deck = Deck.find(params[:id])
     @user = current_user
-    if @deck.current_deck?(current_user.current_deck)
-      @user.current_deck = nil
-      @user.save
-    end
     @deck.destroy
 
     redirect_to decks_path
   end
 
   def set_current
-    @user = current_user
-    @user.current_deck = params[:id]
-    @user.save
+    current_user.update(current_deck: params[:id])
     redirect_to decks_path
   end
 
