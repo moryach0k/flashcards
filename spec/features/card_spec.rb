@@ -5,7 +5,8 @@ require 'support/create_card_helper.rb'
 
 describe 'checking translation process' do
   let!(:user) { create(:user) }
-  let!(:card) { create(:card, user: user) }
+  let!(:card) { create(:deck, user: user) }
+  let!(:card) { create(:card, deck: deck) }
 
   before(:each) do
     login("user@email.com", "qwerty")

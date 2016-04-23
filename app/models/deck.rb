@@ -4,9 +4,9 @@ class Deck < ActiveRecord::Base
 
   validates :user, presence: true
 
-  scope :current_deck, -> { where("current_deck = ?", true)}
-
-  def set_current
-    self.current_deck = true
+  def current_deck?(id)
+    if self.id == id
+      return true
+    end
   end
 end
