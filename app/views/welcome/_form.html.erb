@@ -1,7 +1,8 @@
 <%= simple_form_for @card, :url => url_for(:action => 'compare_texts', :controller => 'cards'), :method => :post do |f| %>
   <%= f.error_notification %>
-
-  <%= image_tag @card.image.url(:medium) %> 
+  <% unless @card.image_file_name.nil? %>
+    <%= image_tag @card.image.url(:medium) %> 
+  <% end %>
   <br/>
   <%= @card.translated_text %>
   
