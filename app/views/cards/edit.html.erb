@@ -2,4 +2,4 @@
 
 <%= render 'form2' %>
  
-<%= link_to 'Назад', deck_path %>
+<%= link_to 'Назад', deck_path(Card.find(params[:id]).deck) %>

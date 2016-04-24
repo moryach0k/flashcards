@@ -3,6 +3,7 @@
 <div class="main_form">
   <% if @card.nil? %>
     <p>Сегодня нет слов для повторения :)</p>
+    <p>Либо текущая колода пуста :)</p>
   <% else %>
     <%= render 'form' %>
   <% end %>

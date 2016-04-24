@@ -9,16 +9,19 @@
     <% @decks.each do |deck| %>
       <tr>
         <% if deck.id == current_user.current_deck %>
-          <td><%= link_to deck.name+"(Текущая)", deck_path(deck) %></td>
+          <td class="alert alert-success">
+            <%= link_to deck.name+"(Текущая)", deck_path(deck) %>
+          </td>
+          <td></td>
         <% else %>
           <td><%= link_to deck.name, deck_path(deck) %></td>
+          <td><%= link_to "Сделать текущей колодой", set_current_deck_path(deck) %></td>
         <% end %>
-        <td><%= link_to "Сделать текущей колодой", set_current_deck_path(deck) %></td>
-        <td><%= link_to "Добавить карточку", new_deck_card_path(deck), id: "add_card" %></td>
-        <td><%= link_to "Редактировать", edit_deck_path(deck) %></td>
-        <td><%= link_to "Удалить", deck_path(deck), 
-        method: :delete, 
-        data: {confirm: "Вы уверены?"} %></td>
+          <td><%= link_to "Добавить карточку", new_deck_card_path(deck), id: "add_card" %></td>
+          <td><%= link_to "Редактировать", edit_deck_path(deck) %></td>
+          <td><%= link_to "Удалить", deck_path(deck), 
+          method: :delete, 
+          data: {confirm: "Вы уверены?"} %></td>
       </tr>
     <% end %>
 

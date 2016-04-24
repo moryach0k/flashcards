@@ -38,7 +38,7 @@ class DecksController < ApplicationController
 
   def destroy
     @deck = Deck.find(params[:id])
-    @user = current_user
+    @deck.cards.destroy_all
     @deck.destroy
 
     redirect_to decks_path
