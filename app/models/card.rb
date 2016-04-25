@@ -33,14 +33,18 @@ class Card < ActiveRecord::Base
   end
 
   def correctly_translated(user_original_text)
-    if DamerauLevenshtein.distance(original_text.capitalize, user_original_text.capitalize) < 2
+    damerau_levenshtein_distance = DamerauLevenshtein.distance(original_text.capitalize, user_original_text.capitalize)
+    if damerau_levenshtein_distance == 0
       update_after_review
-      return true
+      return 0
+    elsif damerau_levenshtein_distance == 1
+      update_after_review
+      return 1
     else
       self.wrong_attempts += 1
       reset_review_stage
+      return 2
     end
-    false
   end
 
   private
