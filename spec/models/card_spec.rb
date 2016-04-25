@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Card, type: :model do
   let!(:user) { create(:user) }
   let!(:deck) { create(:deck, user: user) }
-  let!(:card) { create(:card, user: user, deck: deck)}
+  let!(:card) { create(:card, user: user, deck: deck) }
 
   it "returns true if correctly translated" do
     expect(card.correctly_translated("waTer")).to be true

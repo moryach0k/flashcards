@@ -35,9 +35,9 @@ class Card < ActiveRecord::Base
 
   def reset_review_date
     if wrong_attempts == 3
-      self.wrong_attempts = 0
-      self.review_stage = 1
-      self.increase_review_date
+      wrong_attempts = 0
+      review_stage = 1
+      increase_review_date
     end
   end
 
@@ -46,8 +46,8 @@ class Card < ActiveRecord::Base
       increase_review_date
       return true
     else
-      self.wrong_attempts += 1
-      self.reset_review_date
+      wrong_attempts += 1
+      reset_review_date
     end
     false
   end
