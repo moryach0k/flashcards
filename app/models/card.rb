@@ -33,7 +33,7 @@ class Card < ActiveRecord::Base
   end
 
   def correctly_translated(user_original_text)
-    if original_text.casecmp(user_original_text) == 0
+    if DamerauLevenshtein.distance(original_text.capitalize, user_original_text.capitalize) < 2
       update_after_review
       return true
     else

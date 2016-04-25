@@ -9,6 +9,10 @@ RSpec.describe Card, type: :model do
     expect(card.correctly_translated("waTer")).to be true
   end
 
+  it "returns true if translated with typo" do
+    expect(card.correctly_translated("woter")).to be true
+  end
+
   it "returns false if mistranslated" do
     expect(card.correctly_translated("cat")).to be false
   end

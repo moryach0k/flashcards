@@ -20,6 +20,7 @@ gem "paperclip", "~> 4.2"
 gem 'aws-sdk', '< 2.0'
 gem "figaro"
 gem 'rails_12factor', group: :production
+gem 'damerau-levenshtein'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
