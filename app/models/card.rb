@@ -12,7 +12,7 @@ class Card < ActiveRecord::Base
 
   scope :needed_to_review, -> { where("review_date <= ?", Time.current) }
 
-  def increase_review_date
+  def update_after_review
     time_to_increase = case review_stage
     when 1
       12.hours
@@ -33,21 +33,21 @@ class Card < ActiveRecord::Base
     self.wrong_attempts = 0
   end
 
-  def reset_review_date
+  def reset_review_stage
     if wrong_attempts == 3
       self.wrong_attempts = 0
       self.review_stage = 1
-      increase_review_date
+      update_after_review
     end
   end
 
   def correctly_translated(user_original_text)
     if original_text.casecmp(user_original_text) == 0
-      increase_review_date
+      update_after_review
       return true
     else
       self.wrong_attempts += 1
-      reset_review_date
+      reset_review_stage
     end
     false
   end
