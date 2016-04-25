@@ -8,8 +8,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = Card.create(card_params.merge(user: current_user, deck: Deck.find(params[:deck_id])))
-    @card.increase_review_date
+    @card = Card.create!(card_params.merge(user: current_user, deck: Deck.find(params[:deck_id]), review_date: Time.current, review_stage: 1))
 
     if @card.save
       redirect_to deck_path(params[:deck_id]), notice: 'Card was successfully created.'
