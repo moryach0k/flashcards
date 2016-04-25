@@ -36,14 +36,14 @@ class Card < ActiveRecord::Base
     damerau_levenshtein_distance = DamerauLevenshtein.distance(original_text.capitalize, user_original_text.capitalize)
     if damerau_levenshtein_distance == 0
       update_after_review
-      return 0
+      { correct: true, typos_count: 0 }
     elsif damerau_levenshtein_distance == 1
       update_after_review
-      return 1
+      { correct: true, typos_count: 1 }
     else
       self.wrong_attempts += 1
       reset_review_stage
-      return 2
+      { correct: false, typos_count: 2 }
     end
   end
 

@@ -41,10 +41,10 @@ class CardsController < ApplicationController
 
   def compare_texts
     @card = Card.find(params[:id])
-    if @card.correctly_translated(params[:user_original_text]) == 0
+    if @card.correctly_translated(params[:user_original_text])[:typos_count] == 0
       flash[:notice] = "Правильно!"
       @card.save
-    elsif @card.correctly_translated(params[:user_original_text]) == 1
+    elsif @card.correctly_translated(params[:user_original_text])[:typos_count] == 1
       flash[:notice] = "Правильно: " + @card.original_text + " , а вы ввели: " + params[:user_original_text]
       @card.save
     else
