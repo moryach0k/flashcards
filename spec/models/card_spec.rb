@@ -6,15 +6,15 @@ RSpec.describe Card, type: :model do
   let!(:card) { create(:card, user: user, deck: deck) }
 
   it "returns true if correctly translated" do
-    expect(card.correctly_translated("waTer")).to eq({ correct: true, typos_count: 0 })
+    expect(card.correctly_translated("waTer")).to eq(correct: true, typos_count: 0)
   end
 
   it "returns true if translated with typo" do
-    expect(card.correctly_translated("woter")).to eq({ correct: true, typos_count: 1 })
+    expect(card.correctly_translated("woter")).to eq(correct: true, typos_count: 1)
   end
 
   it "returns false if mistranslated" do
-    expect(card.correctly_translated("cat")).to eq({ correct: false, typos_count: 2 })
+    expect(card.correctly_translated("cat")).to eq(correct: false, typos_count: 2)
   end
 
   it "set review_stage to 6" do
