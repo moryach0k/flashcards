@@ -3,14 +3,32 @@ require "rails_helper"
 RSpec.describe Card, type: :model do
   let!(:user) { create(:user) }
   let!(:deck) { create(:deck, user: user) }
+  let!(:card) { create(:card, user: user, deck: deck)}
 
   it "returns true if correctly translated" do
-    card = user.cards.create!(original_text: "House", translated_text: "Дом", review_date: Date.today, deck: deck)
-    expect(card.correctly_translated("HoUse")).to be true
+    expect(card.correctly_translated("waTer")).to be true
   end
 
   it "returns false if mistranslated" do
-    card = user.cards.create!(original_text: "Dog", translated_text: "Собака", review_date: Date.today, deck: deck)
     expect(card.correctly_translated("cat")).to be false
+  end
+
+  it "set review_stage to 6" do
+    5.times do
+      card.correctly_translated("WATER")
+    end
+    expect(card.review_stage).to eq 6
+  end
+
+  it "set wrong_attempts to 1" do
+    card.correctly_translated("dog")
+    expect(card.wrong_attempts).to eq 1
+  end
+
+  it "reset wrong_attempts" do
+    3.times do
+      card.correctly_translated("dog")
+    end
+    expect(card.wrong_attempts).to eq 0
   end
 end

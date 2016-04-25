@@ -10,16 +10,44 @@ class Card < ActiveRecord::Base
   validates :deck, presence: true
   validate :original_and_translated_text_cannot_be_the_same
 
-  scope :needed_to_review, -> { where("review_date <= ?", Date.today - 3) }
+  scope :needed_to_review, -> { where("review_date <= ?", Time.current) }
 
   def increase_review_date
-    self.review_date = Date.today + 3
+    time_to_increase = case review_stage
+    when 1
+      12.hours
+    when 2
+      3.day
+    when 3
+      1.week
+    when 4
+      2.week
+    when 5
+      1.month
+    else
+      1.month
+    end
+
+    self.review_date = Time.current + time_to_increase
+    self.review_stage += 1
+    self.wrong_attempts = 0
+  end
+
+  def reset_review_date
+    if wrong_attempts == 3
+      self.wrong_attempts = 0
+      self.review_stage = 1
+      self.increase_review_date
+    end
   end
 
   def correctly_translated(user_original_text)
     if original_text.casecmp(user_original_text) == 0
       increase_review_date
       return true
+    else
+      self.wrong_attempts += 1
+      self.reset_review_date
     end
     false
   end
