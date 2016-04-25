@@ -4,7 +4,7 @@ class UserSessionsController < ApplicationController
     @user = User.new
   end
 
-  def create
+  def create 
     if @user = login(params[:email], params[:password])
       redirect_to(:root, notice: 'Login successful!')
     else

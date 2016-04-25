@@ -45,7 +45,7 @@ class CardsController < ApplicationController
       flash[:notice] = "Правильно!"
       @card.save
     elsif @card.correctly_translated(params[:user_original_text]) == 1
-      flash[:notice] = "Правильно: "+original_text+" , а вы ввели: "+user_original_text
+      flash[:notice] = "Правильно: " + original_text + " , а вы ввели: " + user_original_text
       @card.save
     else
       flash[:notice] = "Неправильно!"
