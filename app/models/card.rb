@@ -13,19 +13,11 @@ class Card < ActiveRecord::Base
   scope :needed_to_review, -> { where("review_date <= ?", Time.current) }
 
   def update_after_review
-    time_to_increase = case review_stage
-    when 1
-      12.hours
-    when 2
-      3.day
-    when 3
-      1.week
-    when 4
-      2.week
-    when 5
-      1.month
+    intervals = {1 => 12.hours, 2 => 3.day, 3 => 1.week, 4 => 2.week, 5 => 1.month}
+    if self.review_stage <= 5
+      time_to_increase = intervals[self.review_stage]
     else
-      1.month
+      time_to_increase = intervals.values.last
     end
 
     self.review_date = Time.current + time_to_increase
@@ -37,7 +29,6 @@ class Card < ActiveRecord::Base
     if wrong_attempts == 3
       self.wrong_attempts = 0
       self.review_stage = 1
-      update_after_review
     end
   end
 
