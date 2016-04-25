@@ -38,7 +38,7 @@ class Card < ActiveRecord::Base
       update_after_review
       return 0
     elsif damerau_levenshtein_distance == 1
-      self.update_after_review
+      update_after_review
       return 1
     else
       self.wrong_attempts += 1
