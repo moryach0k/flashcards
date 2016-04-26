@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-  resources :user_sessions
-  resources :users
-  resources :decks do
-    get :set_current, on: :member
-    resources :cards, shallow: true
+  scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
+    resources :user_sessions
+    resources :users
+    resources :decks do
+      get :set_current, on: :member
+      resources :cards, shallow: true
+    end
   end
+  #resources :application do
+    #get :set_locale
+  #end
 
+  get "set_locale_application" => "application#set_locale"
   post "check" => "cards#compare_texts"
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout

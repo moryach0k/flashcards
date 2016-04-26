@@ -21,6 +21,12 @@
           <li> <%= link_to t("layouts.application.registration"), new_user_path, id: "registration" %> </li>
           <li> <%= link_to t("layouts.application.log_in"), :login, id: "login" %> </li>
         <% end %>
+        <li>
+          <div>
+            <%= link_to "en", locale: "en" %><br/>
+            <%= link_to "ru", locale: "ru" %>
+          </div>
+        </li>
       </ul>
     </header>
 
