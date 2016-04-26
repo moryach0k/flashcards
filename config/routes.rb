@@ -9,9 +9,6 @@ Rails.application.routes.draw do
       resources :cards, shallow: true
     end
   end
-  #resources :application do
-    #get :set_locale
-  #end
 
   get "set_locale_application" => "application#set_locale"
   post "check" => "cards#compare_texts"
