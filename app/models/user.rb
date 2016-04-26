@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
     User.all.each do |user|
       unless user.cards.needed_to_review.nil?
         CardsMailer.pending_cards_notification(user).deliver_now
+      end
     end
   end
 end
