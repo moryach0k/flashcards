@@ -2,7 +2,7 @@
 
 <div class="panel panel-default">
 
-  <div class="panel-heading">Все колоды</div>
+  <div class="panel-heading"><%= t("deck.view.all_decks") %></div>
 
   <table class="table">
 
@@ -10,18 +10,18 @@
       <tr>
         <% if deck.id == current_user.current_deck %>
           <td class="alert alert-success">
-            <%= link_to deck.name+"(Текущая)", deck_path(deck) %>
+            <%= link_to deck.name, deck_path(deck) %>
           </td>
           <td></td>
         <% else %>
           <td><%= link_to deck.name, deck_path(deck) %></td>
-          <td><%= link_to "Сделать текущей колодой", set_current_deck_path(deck) %></td>
+          <td><%= link_to t("deck.view.column_name.make_current"), set_current_deck_path(deck) %></td>
         <% end %>
-          <td><%= link_to "Добавить карточку", new_deck_card_path(deck), id: "add_card" %></td>
-          <td><%= link_to "Редактировать", edit_deck_path(deck) %></td>
-          <td><%= link_to "Удалить", deck_path(deck), 
+          <td><%= link_to t("deck.view.column_name.add_card"), new_deck_card_path(deck), id: "add_card" %></td>
+          <td><%= link_to t("views.button.edit"), edit_deck_path(deck) %></td>
+          <td><%= link_to t("views.button.destroy"), deck_path(deck), 
           method: :delete, 
-          data: {confirm: "Вы уверены?"} %></td>
+          data: {confirm: t("confirm")} %></td>
       </tr>
     <% end %>
 
@@ -29,4 +29,4 @@
 
 </div>
 
-<p> <%= link_to "Добавить колоду", new_deck_path, id: "add_deck" %> </p>
+<p> <%= link_to t("deck.view.add_deck"), new_deck_path, id: "add_deck" %> </p>

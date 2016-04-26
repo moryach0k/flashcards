@@ -3,9 +3,9 @@
   html: { multipart: true, class: 'form-inline' } do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :original_text, placeholder: 'Текст оригинала' %>
+  <%= f.input :original_text, placeholder: t("simple_form.placeholder.original_text") %>
 
-  <%= f.input :translated_text, placeholder: 'Перевод' %>
+  <%= f.input :translated_text, placeholder: t("simple_form.placeholder.translated_text") %>
 
   <%= f.input :image, as: :file %>
 

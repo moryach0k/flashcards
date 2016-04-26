@@ -1,4 +1,4 @@
-en:
+ru:
   simple_form:
     "yes": 'Yes'
     "no": 'No'
@@ -9,16 +9,17 @@ en:
       # When using html, text and mark won't be used.
       # html: '<abbr title="required">*</abbr>'
     error_notification:
-      default_message: "Please review the problems below:"
+      default_message: "Посмотрите на ошибки:"
 
     placeholder:
-      original_text: "Original text"
-      translated_text: "Translated text"
-      deck_name: "Deck name"
-      input_translation: "Translation"
+      original_text: "Оригинал"
+      translated_text: "Перевод"
+      deck_name: "Имя колоды"
+      input_translation: "Перевод"
 
     value:
-      check: "Check"
+      check: "Проверить"
+
     # Examples
     # labels:
     #   defaults:

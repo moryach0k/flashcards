@@ -1,6 +1,6 @@
-<h1>New User</h1>
+<h1><%= t("user.view.new_user") %></h1>
 <p id="alert"><%= alert %></p>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', users_path %>
+<%= link_to t("views.button.back"), users_path %>

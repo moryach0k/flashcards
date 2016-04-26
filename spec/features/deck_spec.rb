@@ -12,6 +12,6 @@ describe 'creating deck process' do
 
   it "checking right creating deck" do
     create_deck("Deck")
-    expect(page).to have_content "Deck was successfully created."
+    expect(page).to have_content I18n.t("deck.created")
   end
 end

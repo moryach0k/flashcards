@@ -20,4 +20,78 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  confirm: "Are you sure?"
+
+  alert:
+    login_first: "Please login first"
+    login_failed: "Login failed!"
+
+  notice:
+    right: "Right!"
+    right_with_typo_part_1: "Right: "
+    right_with_typo_part_2: " , but you have entered: "
+    wrong: "Wrong!"
+    logged_in: "Login successful!"
+    logged_out: "Logged_out"
+
+  layouts:
+    application:
+      app_name: "Flashcards"
+      my_decks: "My decks"
+      edit_profile: "Edit profile"
+      log_out: "Log out"
+      registration: "Registration"
+      log_in: "Log in"
+
+  welcome:
+    promotion: "Firts the best manager of flashcards!"
+    nothing_to_repeat: "Today you have nothing to repeat :)"
+    current_deck_is_empty: "Or current deck is empty"
+
+  card:
+    created: "Card was successfully created."
+    edited: "Card was successfully edited."
+    error:
+      same_texts: "cant be the same"
+    view:
+      all_cards: "All cards"
+      edit_card: "Edit card"
+      add_card: "Add card"
+      column_name:
+        original_text: "Original text"
+        translated_text: "Translated text"
+        review_date: "Review date"
+
+  deck:
+    created: "Deck was successfully created."
+    edited: "Deck was successfully edited."
+    view:
+      all_decks: "All decks"
+      add_deck: "Add deck"
+      edit_deck: "Edit deck"
+      column_name:
+        make_current: "Make current"
+        add_card: "Add card"
+
+  user:
+    created: "User was successfully created."
+    edited: "User was successfully edited."
+    destroyed: "User was successfully destroyed."
+    wrong_registration_info: "Wrong registration information."
+    view:
+      all_users: "All users"
+      new_user: "New User"
+      editing_user: "Edititng User"
+
+  views:
+    button:
+      back: "Back"
+      edit: "Edit"
+      show: "Show"
+      destroy: "Delete"
+
+  activerecord:
+    attributes:
+      user:
+        password: "Password"
+

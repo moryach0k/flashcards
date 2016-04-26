@@ -1,9 +1,9 @@
-<p>Первый в мире удобный менеджер флеш-карточек. Именно так.</p>
+<p><%= t("welcome.promotion") %></p>
 <p id="notice"><%= notice %></p>
 <div class="main_form">
   <% if @card.nil? %>
-    <p>Сегодня нет слов для повторения :)</p>
-    <p>Либо текущая колода пуста :)</p>
+    <p><%= t("welcome.nothing_to_repeat") %></p>
+    <p><%= t("welcome.current_deck_is_empty") %></p>
   <% else %>
     <%= render 'form' %>
   <% end %>

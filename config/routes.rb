@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   resources :user_sessions
   resources :users
   resources :decks do
-    get :set_current, on: :member
+    put :set_current, on: :member
     resources :cards, shallow: true
   end
 
+  put "set_locale_application" => "application#set_locale"
   post "check" => "cards#compare_texts"
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout

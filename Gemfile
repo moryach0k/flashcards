@@ -22,6 +22,7 @@ gem "figaro"
 gem 'rails_12factor', group: :production
 gem 'damerau-levenshtein'
 gem 'whenever', require: false
+gem 'http_accept_language'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
