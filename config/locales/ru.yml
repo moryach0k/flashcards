@@ -15,7 +15,7 @@ ru:
 
   layouts:
     application:
-      app_name: "Фдэшкарточкер"
+      app_name: "Флэшкарточкер"
       my_decks: "Мои колоды"
       edit_profile: "Редактировать профиль"
       log_out: "Выйти"
@@ -69,3 +69,41 @@ ru:
       show: "Показать"
       destroy: "Удалить"
 
+  date:
+    formats:
+      # Use the strftime parameters for formats.
+      # When no format has been given, it uses default.
+      # You can provide other formats here if you like!
+      default: "%d-%m-%Y"
+      short: "%b %d"
+      long: "%B %d, %Y"
+
+    day_names: [Воскресенье, Понедельник, Вторник, Среда, Четверг, Пятница, Суббота]
+    abbr_day_names: [Вс, Пн, Вт, Ср, Чт, Пт, Сб]
+
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, Январь, Февраль, Март, Апрель, Май, Июнь, Июль, Август, Сентябрь, Октябрь, Ноябрь, Декабрь]
+    abbr_month_names: [~, Янв, Феб, Мар, Апр, Май, Июн, Июл, Авг, Сен, Окт, Ноя, Дек]
+    # Used in date_select and datetime_select.
+    order:
+      - year
+      - month
+      - day
+
+  helpers:
+    submit:
+      deck:
+        create: "Создать колоду"
+        update: "Изменить колоду"
+      card:
+        create: "Создать карточку"
+        update: "Изменить карточку"
+      user:
+        create: "Создать пользователя"
+        update: "Изменить пользователя"
+
+  activerecord:
+    attributes:
+      user:
+        password: "Пароль"
+        password_confirmation: "Подтвердите пароль"

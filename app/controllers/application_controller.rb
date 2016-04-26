@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
+  before_filter :set_locale
   before_action :require_login
   protect_from_forgery with: :exception
+
+  def set_locale
+    I18n.locale = :en
+  end
 
   private
   

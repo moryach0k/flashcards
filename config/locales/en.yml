@@ -90,3 +90,8 @@ en:
       show: "Show"
       destroy: "Delete"
 
+  activerecord:
+    attributes:
+      user:
+        password: "Password"
+
