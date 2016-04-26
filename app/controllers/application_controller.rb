@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_filter :set_locale
+  before_action :set_locale
   before_action :require_login, :except => [:set_locale] 
   protect_from_forgery with: :exception
 
@@ -16,10 +16,6 @@ class ApplicationController < ActionController::Base
     if locale && I18n.available_locales.include?(locale.to_sym)
       session[:locale] = I18n.locale = locale.to_sym
     end
-  end
-
-  def default_url_options(_options = {})
-    { locale: I18n.locale }
   end
 
   private

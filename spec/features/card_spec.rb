@@ -14,16 +14,16 @@ describe 'checking translation process' do
 
   it "checking right creating card" do
     create_card("Water", "Вода")
-    expect(page).to have_content "Card was successfully created."
+    expect(page).to have_content I18n.t("card.created")
   end
 
   it "checking right translation" do
     check_translation("water")
-    expect(page).to have_content "Right!"
+    expect(page).to have_content I18n.t("notice.right")
   end
 
   it "checking wrong translation" do
     check_translation("food")
-    expect(page).to have_content "Wrong!"
+    expect(page).to have_content I18n.t("notice.wrong")
   end
 end
