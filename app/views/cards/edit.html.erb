@@ -1,5 +1,5 @@
-<p>Редактировать карточку</p>
+<p><%= t("card.view.edit_card") %></p>
 
 <%= render 'form2' %>
  
-<%= link_to 'Назад', deck_path(Card.find(params[:id]).deck) %>
+<%= link_to t("views.button.back"), deck_path(Card.find(params[:id]).deck) %>

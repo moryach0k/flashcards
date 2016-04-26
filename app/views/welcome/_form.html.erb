@@ -7,10 +7,10 @@
   <%= @card.translated_text %>
   
   <br/>
-  <input id="user_original_text" name="user_original_text" class="form-control" placeholder="Введите перевод" />
+  <input id="user_original_text" name="user_original_text" class="form-control" placeholder=<%= t("simple_form.placeholder.input_translation") %> />
   <br/>
 
   <%= hidden_field_tag "id", @card.id %>
 
-  <%= f.button :submit, value: "Проверить" %>
+  <%= f.button :submit, value: t("simple_form.value.check") %>
 <% end %>

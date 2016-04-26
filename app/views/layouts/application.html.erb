@@ -11,15 +11,15 @@
 	<section id="container">
 
     <header class="navbar">
-      <h1 id="logo"><%= link_to "Флэшкарточкер", root_path %></h1>
+      <h1 id="logo"><%= link_to t("layouts.application.app_name"), root_path %></h1>
       <ul class="nav nav-pills pull-right">
         <% if current_user %>
-          <li> <%= link_to "Мои колоды", decks_path, id: "decks" %> </li>
-          <li> <%= link_to "Редактировать профиль", edit_user_path(current_user.id) %> </li>
-          <li> <%= link_to "Выйти", :logout, method: :post %> </li>
+          <li> <%= link_to t("layouts.application.my_decks"), decks_path, id: "decks" %> </li>
+          <li> <%= link_to t("layouts.application.edit_profile"), edit_user_path(current_user.id) %> </li>
+          <li> <%= link_to t("layouts.application.log_out"), :logout, method: :post %> </li>
         <% else %>
-          <li> <%= link_to "Регистрация", new_user_path, id: "registration" %> </li>
-          <li> <%= link_to "Войти", :login, id: "login" %> </li>
+          <li> <%= link_to t("layouts.application.registration"), new_user_path, id: "registration" %> </li>
+          <li> <%= link_to t("layouts.application.log_in"), :login, id: "login" %> </li>
         <% end %>
       </ul>
     </header>

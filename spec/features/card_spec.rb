@@ -19,11 +19,11 @@ describe 'checking translation process' do
 
   it "checking right translation" do
     check_translation("water")
-    expect(page).to have_content "Правильно!"
+    expect(page).to have_content "Right!"
   end
 
   it "checking wrong translation" do
     check_translation("food")
-    expect(page).to have_content "Неправильно!"
+    expect(page).to have_content "Wrong!"
   end
 end

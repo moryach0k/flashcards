@@ -1,0 +1,71 @@
+ru:
+  confirm: "Вы уверены?"
+
+  alert:
+    login_first: "Сначала войдите"
+    login_failed: "Не удалось войти!"
+
+  notice:
+    right: "Правильно!"
+    right_with_typo_part_1: "Правильно: "
+    right_with_typo_part_2: " , но вы ввели: "
+    wrong: "Неправильно!"
+    logged_in: "Вы успешно вошли!"
+    logged_out: "Вы вышли"
+
+  layouts:
+    application:
+      app_name: "Фдэшкарточкер"
+      my_decks: "Мои колоды"
+      edit_profile: "Редактировать профиль"
+      log_out: "Выйти"
+      registration: "Зарегистрироваться"
+      log_in: "Войти"
+
+  welcome:
+    promotion: "Первый удобный менеджер флэшкарточек!"
+    nothing_to_repeat: "Сегодня вам нечего повторять :)"
+    current_deck_is_empty: "Или текущая колода пуста"
+
+  card:
+    created: "Карточка была успешно создана."
+    edited: "Карточка была успешно отредактирована."
+    error:
+      same_texts: "не могут быть одинаковыми"
+    view:
+      all_cards: "Все карточки"
+      edit_card: "Редактировать карточку"
+      add_card: "Добавить карточку"
+      column_name:
+        original_text: "Оригинал"
+        translated_text: "Перевод"
+        review_date: "Дата пересмотра"
+
+  deck:
+    created: "Колода была успешно создана."
+    edited: "Колода была успешно отредактирована."
+    view:
+      all_decks: "Все колоды"
+      add_deck: "Добавить колоду"
+      edit_deck: "Редактировать колоду"
+      column_name:
+        make_current: "Сделать текущей"
+        add_card: "Добавить карточку"
+
+  user:
+    created: "Профиль был успешно создан."
+    edited: "Профиль был успешно отредактирован."
+    destroyed: "Профиль был успешно удален."
+    wrong_registration_info: "Неправильная информация для регистрации."
+    view:
+      all_users: "Все пользователи"
+      new_user: "Новый пользователь"
+      editing_user: "Редактировать профиль"
+
+  views:
+    button:
+      back: "Назад"
+      edit: "Редактировать"
+      show: "Показать"
+      destroy: "Удалить"
+

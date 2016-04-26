@@ -30,10 +30,10 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         auto_login(@user)
-        format.html { redirect_to root_path, notice: 'User was successfully created.' }
+        format.html { redirect_to root_path, notice: t("user.created") }
         format.json { render :show, status: :created, location: @user }
       else
-        flash.now[:alert] = "Wrong registration information."
+        flash.now[:alert] = t("user.wrong_registration_info")
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: t("user.edited") }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: t("user.destroyed") }
       format.json { head :no_content }
     end
   end

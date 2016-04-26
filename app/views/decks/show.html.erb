@@ -7,9 +7,9 @@
   <table class="table">
 
     <tr>
-      <th>Оригинал</th>
-      <th>Перевод</th>
-      <th>Дата просмотра</th>
+      <th><%= t("card.view.column_name.original_text") %></th>
+      <th><%= t("card.view.column_name.translated_text") %></th>
+      <th><%= t("card.view.column_name.review_date") %></th>
     </tr>
     <% @deck.cards.each do |card| %>
       <tr>
@@ -18,14 +18,14 @@
         <td><%= card.review_date.day.to_s << "/" << 
         card.review_date.month.to_s << "/" << 
         card.review_date.year.to_s %></td>
-        <td><%= link_to "Редактировать", edit_card_path(card) %></td>
-        <td><%= link_to "Удалить", card_path(card), 
+        <td><%= link_to t("views.button.edit"), edit_card_path(card) %></td>
+        <td><%= link_to t("views.button.destroy"), card_path(card), 
         method: :delete, 
-        data: {confirm: "Вы уверены?"} %></td>
+        data: {confirm: t("confirm")} %></td>
       </tr>
     <% end %>
 
   </table>
 
 </div>
-<%= link_to "Назад", decks_path %>
+<%= link_to t("views.button.back"), decks_path %>

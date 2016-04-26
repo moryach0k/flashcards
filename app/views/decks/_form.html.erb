@@ -3,7 +3,7 @@
   html: { class: 'form-inline' } do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :name, placeholder: 'Имя колоды' %>
+  <%= f.input :name, placeholder: t("simple_form.placeholder.deck_name") %>
 
   <%= f.button :submit, id: "add_deck_btn" %>
 <% end %>

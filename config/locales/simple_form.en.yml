@@ -10,6 +10,16 @@ en:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Please review the problems below:"
+
+    placeholder:
+      original_text: "Original text"
+      translated_text: "Translated text"
+      review_date: "Review date"
+      deck_name: "Deck name"
+      input_translation: "Input translation"
+
+    value:
+      check: "Check"
     # Examples
     # labels:
     #   defaults:

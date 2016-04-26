@@ -1,5 +1,5 @@
-<p>Создать новую карточку</p>
+<p><%= t("card.view.add_card") %></p>
 
 <%= render 'form' %>
  
-<%= link_to 'Назад', deck_cards_path %>
+<%= link_to t("views.button.back"), deck_cards_path %>

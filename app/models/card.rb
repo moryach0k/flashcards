@@ -51,8 +51,8 @@ class Card < ActiveRecord::Base
 
   def original_and_translated_text_cannot_be_the_same
     if original_text.casecmp(translated_text) == 0
-      errors.add(:original_text, "cant be the same")
-      errors.add(:translated_text, "cant be the same")
+      errors.add(:original_text, t("card.error.same_texts"))
+      errors.add(:translated_text, t("card.error.same_texts"))
     end
   end
 end

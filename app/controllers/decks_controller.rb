@@ -16,7 +16,7 @@ class DecksController < ApplicationController
     @deck = current_user.decks.create(deck_params)
 
     if @deck.save
-      redirect_to decks_path, notice: 'Deck was successfully created.'
+      redirect_to decks_path, notice: t("deck.created")
     else
       render "new"
     end
@@ -30,7 +30,7 @@ class DecksController < ApplicationController
     @deck = Deck.find(params[:id])
 
     if @deck.update(deck_params)
-      redirect_to decks_path, notice: 'Deck was successfully edited.'
+      redirect_to decks_path, notice: t("deck.edited")
     else
       render 'edit'
     end
