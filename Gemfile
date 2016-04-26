@@ -21,6 +21,7 @@ gem 'aws-sdk', '< 2.0'
 gem "figaro"
 gem 'rails_12factor', group: :production
 gem 'damerau-levenshtein'
+gem 'whenever', require: false
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
