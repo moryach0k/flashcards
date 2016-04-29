@@ -15,3 +15,12 @@
 //= require turbolinks
 //= require bootstrap.min
 //= require_tree .
+$(document).ready(function() { 
+  if ($('#quality_timer').length == 1) {
+    var quality_timer = 0;
+    var interval = setInterval(function() { 
+      $('#quality_timer').val(quality_timer++);
+      if (quality_timer >= 60) clearInterval(interval); 
+      }, 1000);
+  }
+})
