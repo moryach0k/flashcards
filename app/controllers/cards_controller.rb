@@ -42,8 +42,7 @@ class CardsController < ApplicationController
   def compare_texts
     @card = Card.find(params[:id])
     @card.check_translation(params[:user_original_text], params[:quality_timer])
-    @card.save
-    if @card.correctly_translated?
+    if @card.correctly_translated?(params[:user_original_text])
       flash[:notice] = t("notice.right")
     else
       flash[:notice] = t("notice.wrong")
