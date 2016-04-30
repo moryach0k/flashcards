@@ -6,27 +6,21 @@ class SuperMemo
   FIRST_INTERVAL = 1
   SECOND_INTERVAL = 6
 
-  def initialize()
-  end
-
   def execute(card_info)
-    review_stage = card_info[:review_stage]
     interval = card_info[:interval]
     ef = card_info[:ef]
-    quality_timer = card_info[:quality_timer]
-    typos_count = card_info[:typos_count]
-    q = set_quality(typos_count, quality_timer)
+    q = set_quality(card_info[:typos_count], card_info[:quality_timer])
     if q < 3
       interval = 0
     else
       ef = set_ef(ef, q)
-      interval = set_interval(review_stage, interval, ef)
+      interval = set_interval(card_info[:review_stage], interval, ef)
     end
     {
       interval: interval,
       ef: ef,
       review_date: Time.current + interval.days,
-      review_stage: review_stage + 1
+      review_stage: card_info[:review_stage] + 1
     }
   end
 
