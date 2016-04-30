@@ -19,7 +19,7 @@ class Card < ActiveRecord::Base
       review_stage: review_stage,
       interval: interval,
       ef: ef,
-      qulity_timer: quality_timer,
+      quality_timer: quality_timer,
       typos_count: dl_distance
     }
     update_attributes(supermemo.execute(card_info))
