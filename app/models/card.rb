@@ -14,7 +14,6 @@ class Card < ActiveRecord::Base
 
   def check_translation(user_original_text, quality_timer)
     dl_distance = DamerauLevenshtein.distance(original_text.capitalize, user_original_text.capitalize)
-    supermemo = SuperMemo.new
     card_info = {
       review_stage: review_stage,
       interval: interval,
@@ -22,7 +21,7 @@ class Card < ActiveRecord::Base
       quality_timer: quality_timer,
       typos_count: dl_distance
     }
-    update_attributes(supermemo.execute(card_info))
+    update_attributes(SuperMemo.execute(card_info))
   end
 
   def correctly_translated?(user_original_text)

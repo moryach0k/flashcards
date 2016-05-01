@@ -6,7 +6,7 @@ class SuperMemo
   FIRST_INTERVAL = 1
   SECOND_INTERVAL = 6
 
-  def execute(card_info)
+  def self.execute(card_info)
     interval = card_info[:interval]
     ef = card_info[:ef]
     q = set_quality(card_info[:typos_count], card_info[:quality_timer])
@@ -26,7 +26,7 @@ class SuperMemo
 
   private
 
-  def set_quality(typos_count, quality_timer)
+  def self.set_quality(typos_count, quality_timer)
     if typos_count > 1
       0
     elsif typos_count == 1
@@ -41,7 +41,7 @@ class SuperMemo
     end
   end
 
-  def set_ef(ef,q)
+  def self.set_ef(ef,q)
     if ef < MIN_EF
       MIN_EF
     else
@@ -49,7 +49,7 @@ class SuperMemo
     end
   end
 
-  def set_interval(review_stage, interval, ef)
+  def self.set_interval(review_stage, interval, ef)
     case review_stage
     when 1
       FIRST_INTERVAL
