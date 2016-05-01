@@ -11,6 +11,7 @@
   <br/>
 
   <%= hidden_field_tag "id", @card.id %>
+  <%= hidden_field_tag :quality_timer %>
 
-  <%= f.button :submit, value: t("simple_form.value.check") %>
+  <%= f.button :submit, value: t("simple_form.value.check"), id: "translate" %>
 <% end %>

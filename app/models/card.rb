@@ -12,47 +12,28 @@ class Card < ActiveRecord::Base
 
   scope :needed_to_review, -> { where("review_date <= ?", Time.current) }
 
-  def update_after_review
-    intervals = {1 => 12.hours, 2 => 3.day, 3 => 1.week, 4 => 2.week, 5 => 1.month}
-    if self.review_stage <= 5
-      time_to_increase = intervals[self.review_stage]
-    else
-      time_to_increase = intervals.values.last
-    end
-
-    self.review_date = Time.current + time_to_increase
-    self.review_stage += 1
-    self.wrong_attempts = 0
+  def check_translation(user_original_text, quality_timer)
+    dl_distance = DamerauLevenshtein.distance(original_text.capitalize, user_original_text.capitalize)
+    card_info = {
+      review_stage: review_stage,
+      interval: interval,
+      ef: ef,
+      quality_timer: quality_timer,
+      typos_count: dl_distance
+    }
+    update_attributes(SuperMemo.execute(card_info))
   end
 
-  def reset_review_stage
-    if wrong_attempts == 3
-      self.wrong_attempts = 0
-      self.review_stage = 1
-    end
-  end
-
-  def correctly_translated(user_original_text)
-    damerau_levenshtein_distance = DamerauLevenshtein.distance(original_text.capitalize, user_original_text.capitalize)
-    if damerau_levenshtein_distance == 0
-      update_after_review
-      { correct: true, typos_count: 0 }
-    elsif damerau_levenshtein_distance == 1
-      update_after_review
-      { correct: true, typos_count: 1 }
-    else
-      self.wrong_attempts += 1
-      reset_review_stage
-      { correct: false, typos_count: 2 }
-    end
+  def correctly_translated?(user_original_text)
+    DamerauLevenshtein.distance(original_text.capitalize, user_original_text.capitalize) < 2
   end
 
   private
 
   def original_and_translated_text_cannot_be_the_same
     if original_text.casecmp(translated_text) == 0
-      errors.add(:original_text, t("card.error.same_texts"))
-      errors.add(:translated_text, t("card.error.same_texts"))
+      errors.add(:original_text, I18n::t("card.error.same_texts"))
+      errors.add(:translated_text, I18n::t("card.error.same_texts"))
     end
   end
 end
