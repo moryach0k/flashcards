@@ -1,11 +1,11 @@
 class WelcomeController < ApplicationController
   def index
     unless current_user.nil?
-      @card =  if current_user.current_deck.nil?
-        current_user.cards.needed_to_review.sample
-      else
-        current_user.decks.find(current_user.current_deck).cards.needed_to_review.sample
-      end
+      @card = if current_user.current_deck.nil?
+                current_user.cards.needed_to_review.sample
+              else
+                current_user.decks.find(current_user.current_deck).cards.needed_to_review.sample
+              end
       respond_to do |format|
         format.html
         format.js
