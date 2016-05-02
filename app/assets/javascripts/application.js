@@ -12,10 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap.min
 //= require_tree .
-$(document).ready(function() { 
+function startTimer() {
   if ($('#quality_timer').length == 1) {
     var qualityTimer = 0;
     var interval = setInterval(function() { 
@@ -25,4 +24,7 @@ $(document).ready(function() {
       } 
     }, 1000);
   }
+}
+$(document).ready(function() { 
+  startTimer();
 });

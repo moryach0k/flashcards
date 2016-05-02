@@ -1,0 +1,8 @@
+<% if @card %>
+  $("#translation_form").html("<%= j render 'form' %>")
+  $("#notice").html("<%= j render 'message' %>")
+  startTimer();
+<% else %>
+  $("#translation_form").html("<%= j render 'no_cards_to_repeat' %>")
+  $("#notice").html("<%= j render 'message' %>")
+<% end %>
