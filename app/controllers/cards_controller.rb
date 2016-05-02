@@ -39,17 +39,6 @@ class CardsController < ApplicationController
     redirect_to deck_path(deck)
   end
 
-  def compare_texts
-    @card = Card.find(params[:id])
-    @card.check_translation(params[:user_original_text], params[:quality_timer])
-    if @card.correctly_translated?(params[:user_original_text])
-      flash[:notice] = t("notice.right")
-    else
-      flash[:notice] = t("notice.wrong")
-    end
-    redirect_to root_path
-  end
-
   private
 
   def card_params

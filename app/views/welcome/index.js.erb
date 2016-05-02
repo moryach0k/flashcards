@@ -1,0 +1,8 @@
+<% unless @card.nil? %>
+  $("#translation_form").html("<%= escape_javascript(render('form')) %>");
+  $('#notice').html("<%= escape_javascript(render('message')) %>");
+  startTimer();
+<% else %>
+  $("#translation_form").html("<%= escape_javascript(render('no_cards_to_repeat')) %>");
+  $('#notice').html("<%= escape_javascript(render('message')) %>");
+<% end %>

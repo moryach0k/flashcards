@@ -1,4 +1,4 @@
-<%= simple_form_for @card, :url => url_for(:action => 'compare_texts', :controller => 'cards'), :method => :post do |f| %>
+<%= simple_form_for @card, :url => url_for(:action => 'compare_texts', :controller => 'welcome'), :method => :post, :remote => true do |f| %>
   <%= f.error_notification %>
   <% unless @card.image_file_name.nil? %>
     <%= image_tag @card.image.url(:medium) %> 
