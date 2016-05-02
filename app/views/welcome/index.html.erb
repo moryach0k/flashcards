@@ -1,11 +1,11 @@
 <p><%= t("welcome.promotion") %></p>
 <p id="notice"><%= notice %></p>
 <div class="main_form">
-  <div id="translation_form"> 
-    <% if @card.nil? %>
-      <%= render 'no_cards_to_repeat' %>
-    <% else %>
+  <div id="translation_form">
+    <% if @card %>
       <%= render 'form' %>
+    <% else %>
+      <%= render 'no_cards_to_repeat' %>
     <% end %>
   </div>
 </div>
