@@ -15,10 +15,10 @@ Rails.application.routes.draw do
       resources :cards, shallow: true
     end
     post 'logout' => 'user_sessions#destroy', :as => :logout
-    post "check" => "welcome#compare_texts"
     put "set_current_deck" => "decks#set_current_deck"
   end
 
+  post "check" => "welcome#compare_texts"
   put "set_locale_application" => "application#set_locale"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
