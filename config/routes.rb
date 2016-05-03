@@ -1,18 +1,25 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-  resources :user_sessions
-  resources :users
-  resources :decks do
-    put :set_current, on: :member
-    resources :cards, shallow: true
+  scope module: 'home' do
+    resources :user_sessions, only: [:new, :create]
+    resources :users, only: [:new, :create]
+    get 'login' => 'user_sessions#new', :as => :login
+  end
+
+  scope module: 'dashboard' do
+    resources :user_sessions, only: [:destroy]
+    resources :users, only: [:edit, :update, :destroy]
+    resources :decks do
+      put :set_current, on: :member
+      resources :cards, shallow: true
+    end
+    post 'logout' => 'user_sessions#destroy', :as => :logout
+    post "check" => "welcome#compare_texts"
+    put "set_current_deck" => "decks#set_current_deck"
   end
 
   put "set_locale_application" => "application#set_locale"
-  post "check" => "welcome#compare_texts"
-  get 'login' => 'user_sessions#new', :as => :login
-  post 'logout' => 'user_sessions#destroy', :as => :logout
-  put "set_current_deck" => "decks#set_current_deck"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
