@@ -61,12 +61,12 @@ end
 
 group :development do
   gem 'capistrano-rails'
-  gem 'capistrano-bundler'
   gem 'capistrano-rbenv'
-  gem 'capistrano3-puma'
+  gem 'capistrano-bundler'
+  gem 'capistrano3-puma' 
 end
 
-group :production do 
+group :production do
   gem 'puma'
 end
 
