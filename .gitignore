@@ -21,7 +21,9 @@ pickle-email-*.html
 
 # Ignore config files
 config/initializers/secret_token.rb
-
+config/provision/keys
+config/provision/ansible_ec2.pem
+config/provision/configs/settings.yml
 config/database.yml
 
 # Ignore bundler config.

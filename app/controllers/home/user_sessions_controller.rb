@@ -1,5 +1,6 @@
-class UserSessionsController < ApplicationController
-  skip_before_action :require_login, except: [:destroy]
+class Home::UserSessionsController < ApplicationController
+  skip_before_action :require_login
+
   def new
     @user = User.new
   end
@@ -11,10 +12,5 @@ class UserSessionsController < ApplicationController
       flash.now[:alert] = t("alert.login_failed")
       render action: 'new'
     end
-  end
-
-  def destroy
-    logout
-    redirect_to(:root, notice: t("notice.logged_out"))
   end
 end
