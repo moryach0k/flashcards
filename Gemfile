@@ -59,3 +59,14 @@ group :development do
   gem 'spring'
 end
 
+group :development do
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-puma'
+end
+
+group :production do 
+  gem 'puma'
+end
+
